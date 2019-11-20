@@ -31,8 +31,6 @@ class Application
      search_term = req.params["item"]
      resp.write  handle_add(search_term)
 
-
-
     else
       resp.write "Path Not Found"
     end
@@ -56,7 +54,7 @@ class Application
       return "We don't have that item"
     end
   end
-# end
+end
 # if @@items.include?(search_term)
 #   @@cart << search_term
 #   resp.write "added #{search_term}"
