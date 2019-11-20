@@ -28,13 +28,9 @@ class Application
      resp.write handle_search(search_term)
 
     elsif req.path.match(/add/)
-     search_term = req.params["q"]
-     if @@items.include?(search_term)
-       @@cart << search_term
-       resp.write "added #{search_term}"
-     else
-       resp.write "We don't have that item"
-     end
+     search_term = req.params["item"]
+     resp.write  handle_add(search_term)
+
 
 
     else
@@ -52,13 +48,18 @@ class Application
     end
   end
 
-  # def handle_add(search_term)
-  #   binding.pry
-  #   if @@items.include?(search_term)
-  #     @@cart << search_term
-  #     return "added #{search_term}"
-  #   else
-  #     return "We don't have that item"
-  #   end
-  # end
-end
+  def handle_add(search_term)
+    if @@items.include?(search_term)
+      @@cart << search_term
+      return "added #{search_term}"
+    else
+      return "We don't have that item"
+    end
+  end
+# end
+# if @@items.include?(search_term)
+#   @@cart << search_term
+#   resp.write "added #{search_term}"
+# else
+#   resp.write "We don't have that item"
+# end
